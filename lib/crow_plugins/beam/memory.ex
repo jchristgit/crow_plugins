@@ -30,13 +30,13 @@ defmodule CrowPlugins.BEAM.Memory do
       'system.info The total amount of memory currently allocated for the emulator that is not directly related to any Erlang process',
       'atom.label memory allocated for atoms',
       'atom.info The total amount of memory currently allocated for atoms',
-      'atom_used.label memory currently used for atoms',
+      'atom_used.label memory used for atoms',
       'atom_used.info The total amount of memory currently used for atoms',
-      'binary.label memory currently allocated for binaries',
+      'binary.label memory allocated for binaries',
       'binary.info The total amount of memory currently allocated for binaries',
-      'code.label memory currently allocated for code',
+      'code.label memory allocated for code',
       'code.info The total amount of memory currently allocated for Erlang code',
-      'ets.label memory currently allocated for ETS tables',
+      'ets.label memory allocated for ETS tables',
       'ets.info The total amount of memory currently allocated for ETS tables'
     ]
   end
