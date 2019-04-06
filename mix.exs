@@ -7,7 +7,8 @@ defmodule CrowPlugins.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -16,6 +17,18 @@ defmodule CrowPlugins.MixProject do
     [
       applications: [],
       extra_applications: [:logger]
+    ]
+  end
+
+  def package do
+    [
+      description: "Plugins for the Crow munin node",
+      licenses: ["ISC"],
+      links: %{
+        "Documentation" => "https://hexdocs.pm/crow_plugins",
+        "GitHub" => "https://github.com/jchristgit/crow_plugins"
+      },
+      maintainers: ["Johannes Christ"]
     ]
   end
 
