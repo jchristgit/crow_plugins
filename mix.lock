@@ -1,0 +1,3 @@
+%{
+  "crow": {:hex, :crow, "0.1.0", "23c3a49547376c69c2bea6a928af7e3beffdc6b414875588486435c126fae368", [:mix], [], "hexpm"},
+}

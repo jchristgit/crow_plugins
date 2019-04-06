@@ -14,6 +14,7 @@ defmodule CrowPlugins.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      applications: [],
       extra_applications: [:logger]
     ]
   end
@@ -21,7 +22,7 @@ defmodule CrowPlugins.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:crow, ">= 0.1"}
+      {:crow, "~> 0.1"}
     ]
   end
 end
