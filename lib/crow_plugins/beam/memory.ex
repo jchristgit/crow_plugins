@@ -19,6 +19,7 @@ defmodule CrowPlugins.BEAM.Memory do
     [
       'graph_args --base 1000 -l 0',
       'graph_category beam',
+      'graph_title BEAM memory usage',
       'total.label total memory',
       'total.info The total amount of memory currently allocated',
       'processes.label memory allocated for processes',
