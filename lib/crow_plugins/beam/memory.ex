@@ -17,7 +17,7 @@ defmodule CrowPlugins.BEAM.Memory do
   @impl true
   def config do
     [
-      'graph_args --base 1000 -l 0',
+      'graph_args --base 1024 -l 0',
       'graph_category beam',
       'graph_title BEAM memory usage',
       'total.label total memory',
