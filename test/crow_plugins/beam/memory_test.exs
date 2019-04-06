@@ -2,7 +2,7 @@ defmodule CrowPlugins.BEAM.MemoryTest do
   use ExUnit.Case, async: true
 
   alias CrowPlugins.BEAM.Memory
-  
+
   describe "config/0" do
     test "returns a list of charlists" do
       config = Memory.config()

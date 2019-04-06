@@ -2,7 +2,7 @@ defmodule CrowPlugins.BEAM.SystemInfoTest do
   use ExUnit.Case, async: true
 
   alias CrowPlugins.BEAM.SystemInfo
-  
+
   describe "config/0" do
     test "returns a list of charlists" do
       config = SystemInfo.config()
