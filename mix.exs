@@ -38,7 +38,7 @@ defmodule CrowPlugins.MixProject do
       {:crow, "~> 0.1"},
 
       # Linting dependencies
-      {:credo, "~> 1.0", only: :dev, runtime: false},
+      {:credo, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 end
