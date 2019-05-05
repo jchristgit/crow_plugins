@@ -15,7 +15,8 @@ defmodule CrowPlugins.BEAM.ContextSwitches do
   @impl true
   def config do
     [
-      'graph_args -l 0',
+      'graph_args -l 0 --base 1000',
+      'graph_scale no',
       'graph_category beam',
       'graph_title context switches',
       'total.label context switches',

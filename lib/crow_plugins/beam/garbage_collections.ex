@@ -18,6 +18,7 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
   def config do
     [
       'graph_args -l 0',
+      'graph_category beam',
       'graph_title garbage collections',
       'total.label garbage collections',
       'total.info The total number of garbage collections.',

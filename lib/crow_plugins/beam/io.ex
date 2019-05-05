@@ -17,12 +17,13 @@ defmodule CrowPlugins.BEAM.IO do
     [
       'graph_args -l 0 --base 1024',
       'graph_title bytes received and sent through ports',
-      'graph_label bytes in (-) / out (+)',
-      'in.label bytes received',
+      'graph_category beam',
+      'graph_vlabel bytes in (-) / out (+)',
       'in.graph no',
+      'in.label bytes',
       'in.min 0',
       'in.type DERIVE',
-      'out.label bytes sent',
+      'out.label bytes',  # This is the only label shown for the graph.
       'out.negative in',
       'out.min 0',
       'out.type DERIVE'
