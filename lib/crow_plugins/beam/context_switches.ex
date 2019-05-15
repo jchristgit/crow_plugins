@@ -18,11 +18,11 @@ defmodule CrowPlugins.BEAM.ContextSwitches do
       'graph_args -l 0 --base 1000',
       'graph_scale no',
       'graph_category beam',
+      'graph_vlabel switches / second',
       'graph_title context switches',
       'total.label context switches',
       'total.min 0',
-      'total.type DERIVE',
-      'total.info The total number of context switches since the system has started.'
+      'total.type DERIVE'
     ]
   end
 

@@ -20,8 +20,9 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
       'graph_args -l 0',
       'graph_category beam',
       'graph_title garbage collections',
+      'graph_vlabel gcs / second',
       'total.label garbage collections',
-      'total.info The total number of garbage collections.',
+      'total.info The total number of garbage collections per second.',
       'total.min 0',
       'total.type DERIVE'
     ]

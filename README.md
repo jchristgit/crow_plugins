@@ -1,4 +1,4 @@
-# CrowPlugins
+# crow_plugins
 
 **TODO: Add description**
 

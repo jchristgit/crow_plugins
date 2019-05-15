@@ -21,7 +21,7 @@ defmodule CrowPlugins.BEAM.SystemInfo do
     [
       'graph_args -l 0',
       'graph_category beam',
-      'graph_title BEAM system counters',
+      'graph_title vm counters',
       'atoms.label total atoms',
       'atoms.info Total atoms existing at the local node',
       'atoms.warning #{warning_value(:atom_limit)}',
