@@ -48,7 +48,7 @@ defmodule CrowPlugins.MixProject do
 
   defp docs do
     [
-      source_ref: "master",
+      source_ref: "master"
     ]
   end
 end
