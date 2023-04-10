@@ -16,6 +16,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   in the VM.
 - `CrowPlugins.BEAM.IO` plugin: Monitors bytes sent and received through ports.
 - `CrowPlugins.BEAM.Memory` plugin: Monitors memory usage of the VM.
+- `CrowPlugins.BEAM.Reductions` plugin: Monitors total VM reductions.
 - `CrowPlugins.BEAM.SystemInfo` plugin: Monitors system counters of the VM.
 
 
