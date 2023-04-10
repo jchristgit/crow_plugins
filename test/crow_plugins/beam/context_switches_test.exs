@@ -3,6 +3,13 @@ defmodule CrowPlugins.BEAM.ContextSwitchesTest do
 
   alias CrowPlugins.BEAM.ContextSwitches
 
+  describe "name/0" do
+    test "returns a charlist" do
+      name = ContextSwitches.name()
+      assert is_list(name)
+    end
+  end
+
   describe "config/0" do
     test "returns a list of charlists" do
       config = ContextSwitches.config()

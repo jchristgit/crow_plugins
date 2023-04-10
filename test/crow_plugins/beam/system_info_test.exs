@@ -3,6 +3,13 @@ defmodule CrowPlugins.BEAM.SystemInfoTest do
 
   alias CrowPlugins.BEAM.SystemInfo
 
+  describe "name/0" do
+    test "returns a charlist" do
+      name = SystemInfo.name()
+      assert is_list(name)
+    end
+  end
+
   describe "config/0" do
     test "returns a list of charlists" do
       config = SystemInfo.config()

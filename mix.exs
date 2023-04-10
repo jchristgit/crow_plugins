@@ -4,11 +4,12 @@ defmodule CrowPlugins.MixProject do
   def project do
     [
       app: :crow_plugins,
-      version: "0.1.1",
-      elixir: "~> 1.8",
+      version: "0.1.2",
+      elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      package: package()
+      package: package(),
+      docs: docs()
     ]
   end
 
@@ -38,10 +39,16 @@ defmodule CrowPlugins.MixProject do
       {:crow, "~> 0.1"},
 
       # Linting dependencies
-      {:credo, "~> 1.0", only: :dev, runtime: false},
+      {:credo, "~> 1.7", only: :dev, runtime: false},
 
       # Documentation dependencies
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.18", only: :dev, runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      source_ref: "master",
     ]
   end
 end
