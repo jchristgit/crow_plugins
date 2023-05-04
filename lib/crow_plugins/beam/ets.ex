@@ -1,6 +1,6 @@
 defmodule CrowPlugins.BEAM.ETS do
   @moduledoc """
-  Display the memory size or items of the given ETS tables, in bytes.
+  Display the memory size or item count of the given ETS tables.
 
   Graph values will be named according to the table title as returned from
   `:ets.info(tab, :name)`. This allows unnamed tables to be monitored as well.
