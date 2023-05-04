@@ -19,9 +19,9 @@ defmodule CrowPlugins.BEAM.Atoms do
   @impl true
   def config(_options) do
     [
-      'graph_args -l 0',
       'graph_category beam',
       'graph_title atoms',
+      'atoms.min 0',
       'atoms.label total atoms',
       'atoms.info Total atoms existing at the local node',
       'atoms.warning #{warning_value(:atom_limit)}',

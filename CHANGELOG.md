@@ -10,6 +10,14 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+### Changed
+
+- `CrowPlugins.BEAM.IO` now emits an area graph.
+
+### Removed
+
+- Lower limits for graphs have been removed for better display.
+
 
 ## v0.2.0 and below
 

@@ -17,12 +17,11 @@ defmodule CrowPlugins.BEAM.Reductions do
   @impl true
   def config(_options) do
     [
-      'graph_args -l 0',
       'graph_category beam',
       'graph_title reductions',
-      'graph_vlabel reductionss / second',
+      'graph_vlabel reductions / second',
       'total.label reductions',
-      'total.info The total number of reductions per second.',
+      'total.info The number of reductions per second.',
       'total.min 0',
       'total.type DERIVE'
     ]

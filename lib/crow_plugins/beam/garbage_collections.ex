@@ -17,7 +17,6 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
   @impl true
   def config(_options) do
     [
-      'graph_args -l 0',
       'graph_category beam',
       'graph_title garbage collections',
       'graph_vlabel gcs / second',
