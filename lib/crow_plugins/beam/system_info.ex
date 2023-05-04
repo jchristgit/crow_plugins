@@ -1,10 +1,11 @@
 defmodule CrowPlugins.BEAM.SystemInfo do
   @moduledoc """
-  Display ETS, port and process count and limits using `:erlang.system_info`.
+  Display ETS, port and process count and limits, and active socket count.
 
-  This plugin also sets `{fieldname}.warning` and `{fieldname}.critical` values for
-  its values: warning status is reported if a count is at 70% of the limit, and
-  critical status is reported if a count is at 90% of the limit.
+  This plugin also sets `{fieldname}.warning` and `{fieldname}.critical` values
+  for its values (except for the socket count): warning status is reported if a
+  count is at 70% of the limit, and critical status is reported if a count is
+  at 90% of the limit.
 
   ## Configuration
 
@@ -40,7 +41,9 @@ defmodule CrowPlugins.BEAM.SystemInfo do
       'processes.label total processes',
       'processes.info Total processes existing at the local node',
       'processes.warning #{warning_value(:process_limit)}',
-      'processes.critical #{critical_value(:process_limit)}'
+      'processes.critical #{critical_value(:process_limit)}',
+      'sockets.label active processes',
+      'sockets.info Active sockets on the local node'
     ]
   end
 
@@ -50,7 +53,8 @@ defmodule CrowPlugins.BEAM.SystemInfo do
     [
       'ets.value #{:erlang.system_info(:ets_count)}',
       'ports.value #{:erlang.system_info(:port_count)}',
-      'processes.value #{:erlang.system_info(:process_count)}'
+      'processes.value #{:erlang.system_info(:process_count)}',
+      'sockets.value #{:socket.number_of()}'
     ]
   end
 

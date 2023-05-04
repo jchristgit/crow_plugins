@@ -12,7 +12,8 @@ are supplied:
 - `CrowPlugins.BEAM.IO`: Monitors bytes sent and received through ports.
 - `CrowPlugins.BEAM.Memory`: Monitors memory usage of the VM.
 - `CrowPlugins.BEAM.Reductions`: Monitors VM reductions.
-- `CrowPlugins.BEAM.SystemInfo`: Monitors system counters of the VM.
+- `CrowPlugins.BEAM.SystemInfo`: Monitors system counters and active sockets of
+  the VM.
 
 
 ## Installation
