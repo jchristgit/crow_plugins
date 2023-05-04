@@ -102,9 +102,15 @@ defmodule CrowPlugins.BEAM.ETS do
   end
 
   defp table_config(options) do
-    map_tables(options, :name, fn {internal_name, name} ->
-      ['#{internal_name}.min 0', '#{internal_name}.label #{name}']
-    end)
+    base =
+      map_tables(options, :name, fn {internal_name, name} ->
+        ['#{internal_name}.min 0', '#{internal_name}.label #{name}']
+      end)
+
+    case Keyword.fetch!(options, :mode) do
+      :memory -> ['graph_args --base 1024' | base]
+      _ -> base
+    end
   end
 
   defp map_tables(options, key, mapper) do
