@@ -23,11 +23,15 @@ defmodule CrowPlugins.BEAM.IO do
       'in.label bytes',
       'in.min 0',
       'in.type DERIVE',
+      'in.draw AREA',
+      'in.colour 1a53ff',
       # This is the only label shown for the graph.
       'out.label bytes',
       'out.negative in',
       'out.min 0',
-      'out.type DERIVE'
+      'out.type DERIVE',
+      'out.draw AREA',
+      'out.colour 1a53ff'
     ]
   end
 
