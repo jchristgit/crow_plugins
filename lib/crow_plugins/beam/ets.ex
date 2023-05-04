@@ -117,7 +117,7 @@ defmodule CrowPlugins.BEAM.ETS do
 
   defp internal_name(name) do
     name
-    |> :erlang.atom_to_binary()
+    |> Atom.to_string()
     |> :binary.replace(".", "_")
     |> :string.lowercase()
   end
