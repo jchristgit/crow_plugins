@@ -1,7 +1,8 @@
 # crow_plugins
 
-crow_plugins supplies a number of plugins for [`crow`](https://github.com/jchristgit/crow).
-Currently, the following plugins are supplied:
+`crow_plugins` supplies a number of plugins for
+[`crow`](https://github.com/jchristgit/crow). Currently, the following plugins
+are supplied:
 
 - `CrowPlugins.BEAM.Atoms`: Counts atoms on the local node.
 - `CrowPlugins.BEAM.ContextSwitches`: Counts context switches in the VM.
