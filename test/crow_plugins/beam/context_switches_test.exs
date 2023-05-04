@@ -1,32 +1,11 @@
 defmodule CrowPlugins.BEAM.ContextSwitchesTest do
-  use ExUnit.Case, async: true
-
   alias CrowPlugins.BEAM.ContextSwitches
+  use ExUnit.Case, async: true
+  use CrowPlugins.BaseTest
 
-  describe "name/0" do
-    test "returns a charlist" do
-      name = ContextSwitches.name()
-      assert is_list(name)
-    end
-  end
-
-  describe "config/0" do
-    test "returns a list of charlists" do
-      config = ContextSwitches.config()
-      assert is_list(config)
-      assert Enum.all?(config, &is_list/1)
-    end
-  end
-
-  describe "values/0" do
-    test "returns a list of charlists" do
-      values = ContextSwitches.values()
-      assert is_list(values)
-      assert Enum.all?(values, &is_list/1)
-    end
-
+  describe "values/1" do
     test "total value is positive" do
-      ['total.value ' ++ value] = ContextSwitches.values()
+      ['total.value ' ++ value] = ContextSwitches.values([])
       assert String.to_integer(to_string(value)) > 0
     end
   end

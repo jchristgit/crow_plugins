@@ -10,13 +10,20 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- `CrowPlugins.BEAM.ContextSwitches` plugin: Counts total context switches in
+
+## v0.2.0 and below
+
+### Added
+
+- `CrowPlugins.BEAM.Atoms` plugin: Counts atoms on the local node.
+- `CrowPlugins.BEAM.ContextSwitches` plugin: Counts context switches in the VM.
+- `CrowPlugins.BEAM.GarbageCollections` plugin: Counts garbage collections in
   the VM.
-- `CrowPlugins.BEAM.GarbageCollections` plugin: Counts total garbage collections
-  in the VM.
+- `CrowPlugins.BEAM.ETS` plugin: Instruments ETS table memory usage or item
+  count, depending on configuration.
 - `CrowPlugins.BEAM.IO` plugin: Monitors bytes sent and received through ports.
 - `CrowPlugins.BEAM.Memory` plugin: Monitors memory usage of the VM.
-- `CrowPlugins.BEAM.Reductions` plugin: Monitors total VM reductions.
+- `CrowPlugins.BEAM.Reductions` plugin: Monitors VM reductions.
 - `CrowPlugins.BEAM.SystemInfo` plugin: Monitors system counters of the VM.
 
 

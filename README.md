@@ -3,14 +3,15 @@
 crow_plugins supplies a number of plugins for [`crow`](https://github.com/jchristgit/crow).
 Currently, the following plugins are supplied:
 
-- `CrowPlugins.BEAM.ContextSwitches`: Graphs context switches performed.
-- `CrowPlugins.BEAM.GarbageCollections`: Graphs garbage collections performed.
-- `CrowPlugins.BEAM.IO`: Graphs bytes sent and received through ports.
-- `CrowPlugins.BEAM.Memory`: Graphs total memory usage, memory allocation & usage for
-  processes, atoms, binaries, ETS tables, and the emulator itself.
-- `CrowPlugins.BEAM.SystemInfo`: Graphs internal VM counters, such as the total
-  number of atoms, ETS tables, ports, and processes. Warning and critical values
-  are configured.
+- `CrowPlugins.BEAM.Atoms`: Counts atoms on the local node.
+- `CrowPlugins.BEAM.ContextSwitches`: Counts context switches in the VM.
+- `CrowPlugins.BEAM.GarbageCollections`: Counts garbage collections in the VM.
+- `CrowPlugins.BEAM.ETS`: Instruments ETS table memory usage or item count,
+  depending on configuration.
+- `CrowPlugins.BEAM.IO`: Monitors bytes sent and received through ports.
+- `CrowPlugins.BEAM.Memory`: Monitors memory usage of the VM.
+- `CrowPlugins.BEAM.Reductions`: Monitors VM reductions.
+- `CrowPlugins.BEAM.SystemInfo`: Monitors system counters of the VM.
 
 
 ## Installation
@@ -20,9 +21,27 @@ Simply add `crow_plugins` to your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:crow_plugins, "~> 0.1"}
+    {:crow_plugins, "~> 0.2"}
   ]
 end
+```
+
+Then configure `:crow` with the plugins you want, for example:
+
+```elixir
+# config/config.exs
+config :crow,
+  ip: {127, 0, 0, 1},
+  port: 4950,
+  plugins: [
+    CrowPlugins.BEAM.Atoms,
+    CrowPlugins.BEAM.ContextSwitches,
+    CrowPlugins.BEAM.GarbageCollections,
+    CrowPlugins.BEAM.IO,
+    CrowPlugins.BEAM.Memory,
+    CrowPlugins.BEAM.Reductions,
+    CrowPlugins.BEAM.SystemInfo
+  ]
 ```
 
 Documentation can be found at [https://hexdocs.pm/crow_plugins](https://hexdocs.pm/crow_plugins).

@@ -7,13 +7,13 @@ defmodule CrowPlugins.BEAM.IO do
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_io'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(_options) do
     [
       'graph_args -l 0 --base 1024',
       'graph_title bytes received and sent through ports',
@@ -33,7 +33,7 @@ defmodule CrowPlugins.BEAM.IO do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     {{:input, received}, {:output, sent}} = :erlang.statistics(:io)
 
     [

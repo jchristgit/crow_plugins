@@ -9,13 +9,13 @@ defmodule CrowPlugins.BEAM.Reductions do
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_reductions'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(_options) do
     [
       'graph_args -l 0',
       'graph_category beam',
@@ -30,7 +30,7 @@ defmodule CrowPlugins.BEAM.Reductions do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     {total_reductions, _words_reclaimed} = :erlang.statistics(:reductions)
 
     ['total.value #{total_reductions}']

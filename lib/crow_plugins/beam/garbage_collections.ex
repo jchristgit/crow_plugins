@@ -9,13 +9,13 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_garbage_collections'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(_options) do
     [
       'graph_args -l 0',
       'graph_category beam',
@@ -30,7 +30,7 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     {num_gcs, _words_reclaimed, 0} = :erlang.statistics(:garbage_collection)
 
     ['total.value #{num_gcs}']

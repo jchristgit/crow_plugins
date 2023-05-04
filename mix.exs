@@ -4,12 +4,14 @@ defmodule CrowPlugins.MixProject do
   def project do
     [
       app: :crow_plugins,
-      version: "0.1.3",
+      version: "0.2.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
       package: package(),
-      docs: docs()
+      docs: docs(),
+      dialyzer: [plt_add_apps: [:crow]]
     ]
   end
 
@@ -36,10 +38,11 @@ defmodule CrowPlugins.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:crow, "~> 0.1"},
+      {:crow, "~> 0.2"},
 
       # Linting dependencies
       {:credo, "~> 1.7", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.3", only: :dev, runtime: false},
 
       # Documentation dependencies
       {:ex_doc, "~> 0.18", only: :dev, runtime: false}
@@ -51,4 +54,7 @@ defmodule CrowPlugins.MixProject do
       source_ref: "master"
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test"]
+  defp elixirc_paths(_), do: ["lib"]
 end

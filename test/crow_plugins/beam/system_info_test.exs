@@ -1,26 +1,20 @@
 defmodule CrowPlugins.BEAM.SystemInfoTest do
   use ExUnit.Case, async: true
+  use CrowPlugins.BaseTest
 
   alias CrowPlugins.BEAM.SystemInfo
 
-  describe "name/0" do
-    test "returns a charlist" do
-      name = SystemInfo.name()
-      assert is_list(name)
-    end
-  end
-
-  describe "config/0" do
-    test "returns a list of charlists" do
-      config = SystemInfo.config()
+  describe "config/1" do
+    test "works with logarithmic option" do
+      config = SystemInfo.config(scale: :logarithmic)
       assert is_list(config)
       assert Enum.all?(config, &is_list/1)
     end
   end
 
-  describe "values/0" do
-    test "returns a list of charlists" do
-      values = SystemInfo.values()
+  describe "values/1" do
+    test "works with logarithmic option" do
+      values = SystemInfo.values(scale: :logarithmic)
       assert is_list(values)
       assert Enum.all?(values, &is_list/1)
     end

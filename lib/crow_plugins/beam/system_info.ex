@@ -1,31 +1,34 @@
 defmodule CrowPlugins.BEAM.SystemInfo do
   @moduledoc """
-  Display atom, ETS, port and process count and limits using `:erlang.system_info`.
+  Display ETS, port and process count and limits using `:erlang.system_info`.
 
   This plugin also sets `{fieldname}.warning` and `{fieldname}.critical` values for
   its values: warning status is reported if a count is at 70% of the limit, and
   critical status is reported if a count is at 90% of the limit.
+
+  ## Configuration
+
+  This plugin accepts the following options:
+
+  - `{:scale, :logarithmic}`: Use logarithmic y-axis scaling. By default,
+  linear scaling will be used.
   """
 
   @behaviour Crow.Plugin
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_system_info'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(options) do
     [
-      'graph_args -l 0',
+      'graph_args -l 0 #{graph_args(options)}',
       'graph_category beam',
       'graph_title vm counters',
-      'atoms.label total atoms',
-      'atoms.info Total atoms existing at the local node',
-      'atoms.warning #{warning_value(:atom_limit)}',
-      'atoms.critical #{critical_value(:atom_limit)}',
       'ets.label total ETS tables',
       'ets.info Total ETS tables existing at the local node',
       'ets.warning #{warning_value(:ets_limit)}',
@@ -43,9 +46,8 @@ defmodule CrowPlugins.BEAM.SystemInfo do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     [
-      'atoms.value #{:erlang.system_info(:atom_count)}',
       'ets.value #{:erlang.system_info(:ets_count)}',
       'ports.value #{:erlang.system_info(:port_count)}',
       'processes.value #{:erlang.system_info(:process_count)}'
@@ -59,4 +61,7 @@ defmodule CrowPlugins.BEAM.SystemInfo do
   defp critical_value(kind) do
     round(:erlang.system_info(kind) * 0.9)
   end
+
+  defp graph_args(scale: :logarithmic), do: '--logarithmic'
+  defp graph_args([]), do: ''
 end

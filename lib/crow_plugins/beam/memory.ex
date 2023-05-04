@@ -9,13 +9,13 @@ defmodule CrowPlugins.BEAM.Memory do
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_memory'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(_options) do
     [
       'graph_args --base 1024 -l 0',
       'graph_category beam',
@@ -43,7 +43,7 @@ defmodule CrowPlugins.BEAM.Memory do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     Enum.map(:erlang.memory(), fn {type, size} -> '#{type}.value #{size}' end)
   end
 end

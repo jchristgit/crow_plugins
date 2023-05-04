@@ -7,13 +7,13 @@ defmodule CrowPlugins.BEAM.ContextSwitches do
 
   @doc false
   @impl true
-  def name do
+  def name(_options) do
     'beam_context_switches'
   end
 
   @doc false
   @impl true
-  def config do
+  def config(_options) do
     [
       'graph_args -l 0 --base 1000',
       'graph_scale no',
@@ -28,7 +28,7 @@ defmodule CrowPlugins.BEAM.ContextSwitches do
 
   @doc false
   @impl true
-  def values do
+  def values(_options) do
     {switches, 0} = :erlang.statistics(:context_switches)
 
     ['total.value #{switches}']
