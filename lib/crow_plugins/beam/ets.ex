@@ -10,6 +10,8 @@ defmodule CrowPlugins.BEAM.ETS do
   This following configuration options are required:
 
   - `{:tables, nonempty_list(:ets.table())}`: A list of tables to instrument.
+  Tables will be instrumented in the order they appear here. This also affects
+  the order of the tables in the output.
 
   - `{:mode, :memory | :items}`: Whether to monitor the memory usage or amount
   of items in the given tables. Note that the name is changed automatically,
@@ -104,7 +106,11 @@ defmodule CrowPlugins.BEAM.ETS do
   defp table_config(options) do
     base =
       map_tables(options, :name, fn {internal_name, name} ->
-        ['#{internal_name}.draw AREASTACK', '#{internal_name}.min 0', '#{internal_name}.label #{name}']
+        [
+          '#{internal_name}.draw AREASTACK',
+          '#{internal_name}.min 0',
+          '#{internal_name}.label #{name}'
+        ]
       end)
 
     case Keyword.fetch!(options, :mode) do
