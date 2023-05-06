@@ -104,7 +104,7 @@ defmodule CrowPlugins.BEAM.ETS do
   defp table_config(options) do
     base =
       map_tables(options, :name, fn {internal_name, name} ->
-        ['#{internal_name}.min 0', '#{internal_name}.label #{name}']
+        ['#{internal_name}.draw AREASTACK', '#{internal_name}.min 0', '#{internal_name}.label #{name}']
       end)
 
     case Keyword.fetch!(options, :mode) do
