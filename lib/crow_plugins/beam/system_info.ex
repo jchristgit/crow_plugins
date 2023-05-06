@@ -26,29 +26,29 @@ defmodule CrowPlugins.BEAM.SystemInfo do
   @doc false
   @impl true
   def config(options) do
-    [
-      'graph_args #{graph_args(options)}',
-      'graph_category beam',
-      'graph_title vm counters',
-      'ets.label total ETS tables',
-      'ets.info Total ETS tables existing at the local node',
-      'ets.warning #{warning_value(:ets_limit)}',
-      'ets.critical #{critical_value(:ets_limit)}',
-      'ets.min 0',
-      'ports.label total ports',
-      'ports.info Total ports existing at the local node',
-      'ports.warning #{warning_value(:port_limit)}',
-      'ports.critical #{critical_value(:port_limit)}',
-      'ports.min 0',
-      'processes.label total processes',
-      'processes.info Total processes existing at the local node',
-      'processes.warning #{warning_value(:process_limit)}',
-      'processes.critical #{critical_value(:process_limit)}',
-      'processes.min 0',
-      'sockets.label active processes',
-      'sockets.info Active sockets on the local node',
-      'sockets.min 0'
-    ]
+    graph_args(options) ++
+      [
+        'graph_category beam',
+        'graph_title vm counters',
+        'ets.label total ETS tables',
+        'ets.info Total ETS tables existing at the local node',
+        'ets.warning #{warning_value(:ets_limit)}',
+        'ets.critical #{critical_value(:ets_limit)}',
+        'ets.min 0',
+        'ports.label total ports',
+        'ports.info Total ports existing at the local node',
+        'ports.warning #{warning_value(:port_limit)}',
+        'ports.critical #{critical_value(:port_limit)}',
+        'ports.min 0',
+        'processes.label total processes',
+        'processes.info Total processes existing at the local node',
+        'processes.warning #{warning_value(:process_limit)}',
+        'processes.critical #{critical_value(:process_limit)}',
+        'processes.min 0',
+        'sockets.label active processes',
+        'sockets.info Active sockets on the local node',
+        'sockets.min 0'
+      ]
   end
 
   @doc false
@@ -70,6 +70,6 @@ defmodule CrowPlugins.BEAM.SystemInfo do
     round(:erlang.system_info(kind) * 0.9)
   end
 
-  defp graph_args(scale: :logarithmic), do: '--logarithmic'
-  defp graph_args([]), do: ''
+  defp graph_args(scale: :logarithmic), do: ['--logarithmic']
+  defp graph_args([]), do: []
 end
