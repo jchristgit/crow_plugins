@@ -20,7 +20,7 @@ defmodule CrowPlugins.BEAM.SystemInfo do
   @doc false
   @impl true
   def name(_options) do
-    'beam_system_info'
+    ~c"beam_system_info"
   end
 
   @doc false
@@ -28,26 +28,26 @@ defmodule CrowPlugins.BEAM.SystemInfo do
   def config(options) do
     graph_args(options) ++
       [
-        'graph_category beam',
-        'graph_title vm counters',
-        'ets.label total ETS tables',
-        'ets.info Total ETS tables existing at the local node',
-        'ets.warning #{warning_value(:ets_limit)}',
-        'ets.critical #{critical_value(:ets_limit)}',
-        'ets.min 0',
-        'ports.label total ports',
-        'ports.info Total ports existing at the local node',
-        'ports.warning #{warning_value(:port_limit)}',
-        'ports.critical #{critical_value(:port_limit)}',
-        'ports.min 0',
-        'processes.label total processes',
-        'processes.info Total processes existing at the local node',
-        'processes.warning #{warning_value(:process_limit)}',
-        'processes.critical #{critical_value(:process_limit)}',
-        'processes.min 0',
-        'sockets.label active processes',
-        'sockets.info Active sockets on the local node',
-        'sockets.min 0'
+        ~c"graph_category beam",
+        ~c"graph_title vm counters",
+        ~c"ets.label total ETS tables",
+        ~c"ets.info Total ETS tables existing at the local node",
+        ~c"ets.warning #{warning_value(:ets_limit)}",
+        ~c"ets.critical #{critical_value(:ets_limit)}",
+        ~c"ets.min 0",
+        ~c"ports.label total ports",
+        ~c"ports.info Total ports existing at the local node",
+        ~c"ports.warning #{warning_value(:port_limit)}",
+        ~c"ports.critical #{critical_value(:port_limit)}",
+        ~c"ports.min 0",
+        ~c"processes.label total processes",
+        ~c"processes.info Total processes existing at the local node",
+        ~c"processes.warning #{warning_value(:process_limit)}",
+        ~c"processes.critical #{critical_value(:process_limit)}",
+        ~c"processes.min 0",
+        ~c"sockets.label active processes",
+        ~c"sockets.info Active sockets on the local node",
+        ~c"sockets.min 0"
       ]
   end
 
@@ -55,10 +55,10 @@ defmodule CrowPlugins.BEAM.SystemInfo do
   @impl true
   def values(_options) do
     [
-      'ets.value #{:erlang.system_info(:ets_count)}',
-      'ports.value #{:erlang.system_info(:port_count)}',
-      'processes.value #{:erlang.system_info(:process_count)}',
-      'sockets.value #{:socket.number_of()}'
+      ~c"ets.value #{:erlang.system_info(:ets_count)}",
+      ~c"ports.value #{:erlang.system_info(:port_count)}",
+      ~c"processes.value #{:erlang.system_info(:process_count)}",
+      ~c"sockets.value #{:socket.number_of()}"
     ]
   end
 
@@ -70,6 +70,6 @@ defmodule CrowPlugins.BEAM.SystemInfo do
     round(:erlang.system_info(kind) * 0.9)
   end
 
-  defp graph_args(scale: :logarithmic), do: ['--logarithmic']
+  defp graph_args(scale: :logarithmic), do: [~c"--logarithmic"]
   defp graph_args([]), do: []
 end

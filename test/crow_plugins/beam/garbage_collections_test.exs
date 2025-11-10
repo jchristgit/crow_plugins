@@ -6,7 +6,7 @@ defmodule CrowPlugins.BEAM.GarbageCollectionsTest do
 
   describe "values/1" do
     test "total value is positive" do
-      ['total.value ' ++ value] = GarbageCollections.values([])
+      [~c"total.value " ++ value] = GarbageCollections.values([])
       assert String.to_integer(to_string(value)) > 0
     end
   end

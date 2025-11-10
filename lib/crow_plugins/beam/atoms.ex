@@ -12,20 +12,20 @@ defmodule CrowPlugins.BEAM.Atoms do
   @doc false
   @impl true
   def name(_options) do
-    'beam_atoms'
+    ~c"beam_atoms"
   end
 
   @doc false
   @impl true
   def config(_options) do
     [
-      'graph_category beam',
-      'graph_title atoms',
-      'atoms.min 0',
-      'atoms.label total atoms',
-      'atoms.info Total atoms existing at the local node',
-      'atoms.warning #{warning_value(:atom_limit)}',
-      'atoms.critical #{critical_value(:atom_limit)}'
+      ~c"graph_category beam",
+      ~c"graph_title atoms",
+      ~c"atoms.min 0",
+      ~c"atoms.label total atoms",
+      ~c"atoms.info Total atoms existing at the local node",
+      ~c"atoms.warning #{warning_value(:atom_limit)}",
+      ~c"atoms.critical #{critical_value(:atom_limit)}"
     ]
   end
 
@@ -33,7 +33,7 @@ defmodule CrowPlugins.BEAM.Atoms do
   @impl true
   def values(_options) do
     [
-      'atoms.value #{:erlang.system_info(:atom_count)}'
+      ~c"atoms.value #{:erlang.system_info(:atom_count)}"
     ]
   end
 

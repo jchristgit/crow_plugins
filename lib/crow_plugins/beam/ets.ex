@@ -55,8 +55,8 @@ defmodule CrowPlugins.BEAM.ETS do
     mode = Keyword.fetch!(options, :mode)
 
     case Keyword.get(options, :name) do
-      nil -> 'beam_ets_#{mode}'
-      name -> 'beam_ets_#{mode}_#{name}'
+      nil -> ~c"beam_ets_#{mode}"
+      name -> ~c"beam_ets_#{mode}_#{name}"
     end
   end
 
@@ -66,9 +66,9 @@ defmodule CrowPlugins.BEAM.ETS do
     mode = Keyword.fetch!(options, :mode)
 
     [
-      'graph_title ets table #{mode}' ++ custom_title(options),
-      'graph_category beam',
-      'graph_vlabel #{graph_vlabel(mode)}'
+      ~c"graph_title ets table #{mode}" ++ custom_title(options),
+      ~c"graph_category beam",
+      ~c"graph_vlabel #{graph_vlabel(mode)}"
     ] ++ table_config(options)
   end
 
@@ -80,12 +80,12 @@ defmodule CrowPlugins.BEAM.ETS do
     case Keyword.fetch!(options, :mode) do
       :memory ->
         map_tables(options, :memory, fn {internal_name, memory} ->
-          ['#{internal_name}.value #{memory * word_size}']
+          [~c"#{internal_name}.value #{memory * word_size}"]
         end)
 
       :items ->
         map_tables(options, :size, fn {internal_name, items} ->
-          ['#{internal_name}.value #{items}']
+          [~c"#{internal_name}.value #{items}"]
         end)
     end
   end
@@ -94,12 +94,12 @@ defmodule CrowPlugins.BEAM.ETS do
     case Keyword.get(options, :title) do
       nil ->
         case Keyword.get(options, :name) do
-          nil -> ''
-          name -> ' (#{name})'
+          nil -> ~c""
+          name -> ~c" (#{name})"
         end
 
       title ->
-        ' (#{title})'
+        ~c" (#{title})"
     end
   end
 
@@ -107,14 +107,14 @@ defmodule CrowPlugins.BEAM.ETS do
     base =
       map_tables(options, :name, fn {internal_name, name} ->
         [
-          '#{internal_name}.draw AREASTACK',
-          '#{internal_name}.min 0',
-          '#{internal_name}.label #{name}'
+          ~c"#{internal_name}.draw AREASTACK",
+          ~c"#{internal_name}.min 0",
+          ~c"#{internal_name}.label #{name}"
         ]
       end)
 
     case Keyword.fetch!(options, :mode) do
-      :memory -> ['graph_args --base 1024' | base]
+      :memory -> [~c"graph_args --base 1024" | base]
       _ -> base
     end
   end

@@ -8,28 +8,28 @@ defmodule CrowPlugins.BEAM.IO do
   @doc false
   @impl true
   def name(_options) do
-    'beam_io'
+    ~c"beam_io"
   end
 
   @doc false
   @impl true
   def config(_options) do
     [
-      'graph_args -l 0 --base 1024',
-      'graph_title bytes received and sent through ports',
-      'graph_category beam',
-      'graph_vlabel bytes in (-) / out (+) per second',
-      'in.graph no',
-      'in.label bytes',
-      'in.min 0',
-      'in.type DERIVE',
-      'in.draw AREA',
+      ~c"graph_args -l 0 --base 1024",
+      ~c"graph_title bytes received and sent through ports",
+      ~c"graph_category beam",
+      ~c"graph_vlabel bytes in (-) / out (+) per second",
+      ~c"in.graph no",
+      ~c"in.label bytes",
+      ~c"in.min 0",
+      ~c"in.type DERIVE",
+      ~c"in.draw AREA",
       # This is the only label shown for the graph.
-      'out.label bytes',
-      'out.negative in',
-      'out.min 0',
-      'out.type DERIVE',
-      'out.draw AREA'
+      ~c"out.label bytes",
+      ~c"out.negative in",
+      ~c"out.min 0",
+      ~c"out.type DERIVE",
+      ~c"out.draw AREA"
     ]
   end
 
@@ -39,8 +39,8 @@ defmodule CrowPlugins.BEAM.IO do
     {{:input, received}, {:output, sent}} = :erlang.statistics(:io)
 
     [
-      'in.value #{received}',
-      'out.value #{sent}'
+      ~c"in.value #{received}",
+      ~c"out.value #{sent}"
     ]
   end
 end

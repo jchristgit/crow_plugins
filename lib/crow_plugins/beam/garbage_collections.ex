@@ -10,20 +10,20 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
   @doc false
   @impl true
   def name(_options) do
-    'beam_garbage_collections'
+    ~c"beam_garbage_collections"
   end
 
   @doc false
   @impl true
   def config(_options) do
     [
-      'graph_category beam',
-      'graph_title garbage collections',
-      'graph_vlabel gcs / second',
-      'total.label garbage collections',
-      'total.info The total number of garbage collections per second.',
-      'total.min 0',
-      'total.type DERIVE'
+      ~c"graph_category beam",
+      ~c"graph_title garbage collections",
+      ~c"graph_vlabel gcs / second",
+      ~c"total.label garbage collections",
+      ~c"total.info The total number of garbage collections per second.",
+      ~c"total.min 0",
+      ~c"total.type DERIVE"
     ]
   end
 
@@ -32,6 +32,6 @@ defmodule CrowPlugins.BEAM.GarbageCollections do
   def values(_options) do
     {num_gcs, _words_reclaimed, 0} = :erlang.statistics(:garbage_collection)
 
-    ['total.value #{num_gcs}']
+    [~c"total.value #{num_gcs}"]
   end
 end

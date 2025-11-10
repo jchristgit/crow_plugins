@@ -10,20 +10,20 @@ defmodule CrowPlugins.BEAM.Reductions do
   @doc false
   @impl true
   def name(_options) do
-    'beam_reductions'
+    ~c"beam_reductions"
   end
 
   @doc false
   @impl true
   def config(_options) do
     [
-      'graph_category beam',
-      'graph_title reductions',
-      'graph_vlabel reductions / second',
-      'total.label reductions',
-      'total.info The number of reductions per second.',
-      'total.min 0',
-      'total.type DERIVE'
+      ~c"graph_category beam",
+      ~c"graph_title reductions",
+      ~c"graph_vlabel reductions / second",
+      ~c"total.label reductions",
+      ~c"total.info The number of reductions per second.",
+      ~c"total.min 0",
+      ~c"total.type DERIVE"
     ]
   end
 
@@ -32,6 +32,6 @@ defmodule CrowPlugins.BEAM.Reductions do
   def values(_options) do
     {total_reductions, _words_reclaimed} = :erlang.statistics(:reductions)
 
-    ['total.value #{total_reductions}']
+    [~c"total.value #{total_reductions}"]
   end
 end
