@@ -13,6 +13,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - `CrowPlugins.BEAM.IO` now emits an area graph.
+- Fix deprecation warnings on newer Elixir versions related to using single
+  quotes for charlists.
 
 ### Removed
 
